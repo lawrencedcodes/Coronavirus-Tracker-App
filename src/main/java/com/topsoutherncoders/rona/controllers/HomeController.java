@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @Autowired
-    DatabaseService coronaVirusDataService;
+    DatabaseService databaseService;
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("locationStat", "TEST");
+        model.addAttribute("locationStats", databaseService.getAllStats());
         return "home";
     }
 
