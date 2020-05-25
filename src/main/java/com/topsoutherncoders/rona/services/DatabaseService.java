@@ -25,7 +25,7 @@ public class DatabaseService {
 
     private List<LocationStats> allStats = new ArrayList<>();
     @PostConstruct
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "* * * 1 * *")
     public void fetchVirusData() throws IOException, InterruptedException {
         List<LocationStats> newStats = new ArrayList<>();
         HttpClient client  = HttpClient.newHttpClient();
@@ -44,6 +44,7 @@ public class DatabaseService {
             System.out.println(locationStat);
             newStats.add(locationStat);
         };
+        this.allStats = newStats;
     }
 
 }
