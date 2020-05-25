@@ -9,22 +9,34 @@
 
 </head>
 
-<body>
-
-<p th:text="${testName}"></p>
-<table>
+<body class="bg-primary text-white">
+<div class="container">
+<h1 class="text-center">Global Coronavirus Tracker</h1>
+<p class="text-center">This application lists the current number of Coronavirus cases reported across the globe</p>
+<div class="jumbotron bg-dark">
+"    <h2 class="display-4 text-center" th:text="${totalReportedCases}"></h2>
+     <p class="lead text-center">Total reported cases as of today.</p>
+     <hr class="my-4"/>
+     <h4 class="text-center">
+         <span>New cases reported since prior day:</span>
+         <span th:text="${totalNewCases}"></span>
+     </h4>
+</div>
+<table class="table">
     <tr>
-        <th>STATE</th>
+        <th>ASSOCIATED COUNTRY</th>
         <th>COUNTRY</th>
-        <th>TOTAL CASES REPORTED</th>
+        <th>TOTAL REPORTED</th>
+        <th>+/- PRIOR DAY</th>
     </tr>
     <tr th:each="locationStat : ${locationStats}">
         <td th:text="${locationStat.state}"></td>
         <td th:text="${locationStat.country}"></td>
         <td th:text="${locationStat.latestTotalCases}">0</td>
+        <td th:text="${locationStat.diffFromPrevDay}">0</td>
     </tr>
 </table>
-
+</div>
 </body>
 
 </html>
